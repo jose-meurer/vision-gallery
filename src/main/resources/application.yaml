@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: visiongallery
+  cloud:
+    azure:
+      storage:
+        blob:
+          endpoint: ${AZURE_STORAGE_ENDPOINT}
+          connection-string: ${AZURE_STORAGE_CONNECTION_STRING}
+      cosmos:
+        endpoint: ${AZURE_COSMOS_ENDPOINT}
+        key: ${AZURE_COSMOS_KEY}
+        database: ${AZURE_COSMOS_DATABASE}
+        populate-query-metrics: true
+
+
