@@ -12,5 +12,6 @@ spring:
         key: ${AZURE_COSMOS_KEY}
         database: ${AZURE_COSMOS_DATABASE}
         populate-query-metrics: true
-
-
+      keyvault:
+        secret:
+          enabled: false
