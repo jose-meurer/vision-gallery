@@ -26,4 +26,15 @@ public class ImageController {
                     .body("Erro ao processar o upload: " + e.getMessage());
         }
     }
+
+    @GetMapping("/allImages")
+    public ResponseEntity<?> getAllImages() {
+        try {
+            var images = imageService.getAllImages();
+            return ResponseEntity.ok(images);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Erro ao buscar as imagens: " + e.getMessage());
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.josemeurer.visiongallery.service;
 
 import com.azure.storage.blob.BlobServiceClient;
+import com.josemeurer.visiongallery.dto.ImageMetadataResponseDTO;
 import com.josemeurer.visiongallery.dto.ImageUploadResponseDTO;
 import com.josemeurer.visiongallery.entity.ImageMetadata;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.josemeurer.visiongallery.repository.ImageMetadataRepository;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.StreamSupport;
+
+import static org.apache.commons.lang3.BooleanUtils.forEach;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +56,20 @@ public class ImageService {
                 .url(blobUrl)
                 .message("Upload realizado com sucesso!")
                 .build();
+    }
+
+    public List<ImageMetadataResponseDTO> getAllImages(){
+        var imagesIterable = imageMetadataRepository.findAll();
+
+        return (StreamSupport.stream(imagesIterable.spliterator(), true)
+                .map(e -> ImageMetadataResponseDTO.builder()
+                        .id(e.getId())
+                        .filename(e.getOriginalFilename())
+                        .url(e.getBlobUrl())
+                        .contentType(e.getContentType())
+                        .sizeInBytes(e.getSizeInBytes())
+                        .uploadDate(e.getUploadDate())
+                        .build()
+                ).toList());
     }
 }
