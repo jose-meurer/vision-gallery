@@ -1,7 +1,7 @@
-package repository;
+package com.josemeurer.visiongallery.repository;
 
 import com.azure.spring.data.cosmos.repository.CosmosRepository;
-import entity.ImageMetadata;
+import com.josemeurer.visiongallery.entity.ImageMetadata;
 import org.springframework.stereotype.Repository;
 
 @Repository

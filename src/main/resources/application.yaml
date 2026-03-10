@@ -15,3 +15,8 @@ spring:
       keyvault:
         secret:
           enabled: false
+
+azure:
+  storage:
+    container:
+      name: upload-images

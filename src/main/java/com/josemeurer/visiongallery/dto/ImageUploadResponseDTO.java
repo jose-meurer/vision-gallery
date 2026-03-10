@@ -1,4 +1,4 @@
-package dto;
+package com.josemeurer.visiongallery.dto;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package entity;
+package com.josemeurer.visiongallery.entity;
 
 import com.azure.spring.data.cosmos.core.mapping.Container;
 import com.azure.spring.data.cosmos.core.mapping.GeneratedValue;
